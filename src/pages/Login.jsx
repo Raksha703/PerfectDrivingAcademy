@@ -29,14 +29,14 @@ const Login= () => {
     try {
       
       const response = await axios.post(`${BACKEND_BASE_URL}/user/login`, formData, {withCredentials: true});
-      console.log(response.cookies)
+      console.log(response)
       toast.success("Login successful!", {
         autoClose: 2000
       });
-      setTimeout(() => {
+      /*setTimeout(() => {
         window.location.reload()        
       }, 2000);
-      navigate("/");
+      navigate("/");*/
     } catch (err) {
       console.error("Login error:", err);
       toast.error("Login failed. Please try again.", {

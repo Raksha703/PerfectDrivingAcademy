@@ -55,6 +55,7 @@ function Register() {
   };
 
   const verifyOtp = () => {
+    console.log(otpGenerated, otp)
     if (otpGenerated === otp) {
       toast.success("OTP verified successfully!", { autoClose: 2000 });
     } else {
