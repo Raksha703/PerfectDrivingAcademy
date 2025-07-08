@@ -10,12 +10,12 @@ const BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL;
 
 const initialFormData = {
   candidate: '',
-  description: '',
+  description: "feedback",
   video: null,
   file: null,
 };
 
-const VideoSettings = () => {
+const VideoSettings = ( {feedback} ) => {
   const [loading, setLoading] = useState(true);
   const [videos, setVideos] = useState([]);
   const [modal, setModal] = useState({ show: false, mode: 'upload' });
@@ -78,7 +78,7 @@ const VideoSettings = () => {
     try {
       await axios.delete(`${BACKEND_BASE_URL}/video/delete/${id}`);
       toast.success("Video deleted successfully!", { autoClose: 2000 });
-      fetchVideos(); // Refresh list
+      fetchVideos();
     } catch (err) {
       console.error('Delete failed:', err);
       toast.error("Failed to delete video.", { autoClose: 2000 });
@@ -120,6 +120,7 @@ const VideoSettings = () => {
             adminMode={true}
             onDelete={handleDelete}
             onUpdate={handleUpdateClick}
+            onlyFeedback={feedback}
           />
 
           <VideoModal
@@ -128,7 +129,7 @@ const VideoSettings = () => {
             onSubmit={modal.mode === 'update' ? handleUpdate : handleUpload}
             formData={formData}
             setFormData={setFormData}
-            mode={modal.mode}
+            mode={feedback ? "feedback" : modal.mode}
           />
         </>
       )}

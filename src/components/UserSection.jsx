@@ -4,7 +4,7 @@ import UserTable from "./UserTable";
 
 const ITEMS_PER_PAGE = 5;
 
-const UserSection = ({ title, users, showApprove, onApprove, onDelete, backUserRole }) => {
+const UserSection = ({ title, users, showApprove, onApprove, onDelete }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(users.length / ITEMS_PER_PAGE);
@@ -48,7 +48,6 @@ const UserSection = ({ title, users, showApprove, onApprove, onDelete, backUserR
           showApprove={showApprove}
           onApprove={onApprove}
           onDelete={onDelete}
-          backUserRole={backUserRole}
         />
       )}
     </div>

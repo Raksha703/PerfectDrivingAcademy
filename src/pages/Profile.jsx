@@ -129,11 +129,18 @@ function Profile() {
 
           <div className="pt-6 space-y-4">
             {userData.role === "Candidate" && (
+              <>
               <Link to={`/logsheet/${userData._id}`}>
                 <button className="bg-blue-950 hover:bg-blue-900 text-white px-6 py-3 rounded-xl shadow transition duration-300 w-full">
                   Logsheet
                 </button>
               </Link>
+              <Link to={`/logsheet/${userData._id}`}>
+                <button className="bg-blue-950 hover:bg-blue-900 text-white px-6 py-3 rounded-xl shadow transition duration-300 w-full">
+                  Form for certificate
+                </button>
+              </Link>
+              </>
             )}
 
             <button

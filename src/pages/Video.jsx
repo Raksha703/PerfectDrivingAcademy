@@ -18,9 +18,13 @@ const gridLayout = [
   { col: 'span 1', row: 'span 1' },
 ];
 
-const Video = ({ adminMode = false, onDelete, onUpdate }) => {
+const Video = ({ adminMode = false, onDelete, onUpdate, onlyFeedback=false }) => {
   const [loading, setLoading] = useState(true);
   const [videos, setVideos] = useState([]);
+
+  const filteredVideos = onlyFeedback ? 
+    videos.filter((v) => v.description==="feedback")
+    : videos.filter((v)=> v.description!=="feedback")
 
   const fetchVideos = async () => {
     try {
@@ -44,11 +48,11 @@ const Video = ({ adminMode = false, onDelete, onUpdate }) => {
     <div className="min-h-screen p-4">
       {!adminMode && (
         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-          Student Video Gallery
+          {onlyFeedback ? "Feedback Gallery" : "Student Video Gallery"}
         </h2>
       )}
 
-      {videos.length === 0 ? (
+      {filteredVideos.length === 0 ? (
         <p className="text-center text-gray-500">No videos uploaded yet.</p>
       ) : (
         <div
@@ -60,7 +64,7 @@ const Video = ({ adminMode = false, onDelete, onUpdate }) => {
             gridAutoFlow: 'dense',
           }}
         >
-          {videos.map((video, index) => {
+          {filteredVideos.map((video, index) => {
             const layout = gridLayout[index % gridLayout.length];
 
             return (
@@ -83,7 +87,7 @@ const Video = ({ adminMode = false, onDelete, onUpdate }) => {
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white text-xs px-3 py-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-4">
                   <span className="font-medium truncate">{video.candidate}</span>
-                  {video.description && (
+                  {!onlyFeedback && video.description && (
                     <span className="italic text-gray-300 truncate">{video.description}</span>
                   )}
 

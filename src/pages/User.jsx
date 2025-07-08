@@ -14,7 +14,7 @@ const User = () => {
 
   const [approvedUsers, setApprovedUsers] = useState([]);
   const [pendingUsers, setPendingUsers] = useState([]);
-  const [showSection, setShowSection] = useState(""); // "approved" or "pending"
+  const [showSection, setShowSection] = useState("");
 
   const fetchUsers = async () => {
     try {
@@ -111,7 +111,6 @@ const User = () => {
                   showApprove={true}
                   onApprove={handleApprove}
                   onDelete={handleDelete}
-                  backUserRole={backUser?.role}
                 />
               )}
             </>

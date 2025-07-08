@@ -108,6 +108,7 @@ function Header() {
                 {role === 'Instructor' ? (
                   <>
                     <NavDropdown.Item onClick={() => handleNavClick('/videoSettings')}>Gallery Settings</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => handleNavClick('/feedbackSettings')}>Feedback Settings</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => handleNavClick('/user')}>Candidates</NavDropdown.Item>
                   </>
                 ) : (

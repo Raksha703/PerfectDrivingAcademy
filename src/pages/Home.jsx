@@ -9,6 +9,7 @@ function Home() {
       <CarouselItem />
       <Services />
       <Video />
+      <Video onlyFeedback={true} />
       <FAQ />
     </div>
   )

@@ -19,6 +19,7 @@ const VideoModal = ({ show, onHide, onSubmit, formData, setFormData, mode }) => 
           />
         </Form.Group>
 
+      {mode !== 'feedback' && (
         <Form.Group className="mt-3">
           <Form.Label>Description</Form.Label>
           <Form.Control
@@ -27,6 +28,8 @@ const VideoModal = ({ show, onHide, onSubmit, formData, setFormData, mode }) => 
             placeholder="Enter description"
           />
         </Form.Group>
+      )
+      }
 
         <Form.Group className="mt-3">
           <Form.Label>{isUpdate ? 'Replace Video File (optional)' : 'Video File'}</Form.Label>

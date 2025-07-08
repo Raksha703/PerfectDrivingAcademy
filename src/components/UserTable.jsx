@@ -14,7 +14,7 @@ const UserTable = ({ users, showApprove, onApprove, onDelete, backUserRole, load
             <th className="py-3 px-4 border">Contact</th>
             <th className="py-3 px-4 border">Vehicle</th>
             {!showApprove && <th className="py-3 px-4 border">Logsheet</th>}
-            {backUserRole === "Instructor" && <th className="py-3 px-4 border">Actions</th>}
+            {<th className="py-3 px-4 border">Actions</th>}
           </tr>
         </thead>
         <tbody className="text-gray-700 text-sm">
@@ -33,7 +33,7 @@ const UserTable = ({ users, showApprove, onApprove, onDelete, backUserRole, load
                   <Link to={`/logsheet/${user._id}`} className="text-blue-500 hover:underline">View</Link>
                 </td>
               )}
-              {backUserRole === "Instructor" && (
+              {(
                 <td className="py-3 px-4 border text-center">
                   <div className="flex justify-center gap-2">
                     {showApprove && (

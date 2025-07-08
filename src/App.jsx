@@ -38,6 +38,7 @@ function App() {
         <Route path="/course" element={<Course />} />
         <Route path="/coursesubcategory/:category" element={<CourseSubCategory />} />        
         <Route path="/videoSettings" element={<VideoSettings />} />
+        <Route path="/feedbackSettings" element={<VideoSettings feedback="true" />} />
 
       </Routes>
       <Footer />
