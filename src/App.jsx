@@ -1,11 +1,18 @@
-import {Routes , Route} from "react-router-dom";
+import {Routes , Route, useLocation} from "react-router-dom";
 import {Header, Footer, Services} from "./components/components"
 import {Course, Video, Home, Instructor, Login, Logsheet, Profile, Register, User, Contact, CourseSubCategory, VideoSettings} from "./pages/pages";
 import {bg} from "./assets/assets";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from "react";
 
 function App() {
+
+  const {pathname} = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, [pathname])
 
   return (
 

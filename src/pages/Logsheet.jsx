@@ -115,7 +115,9 @@ const LogsheetPage = () => {
       ) : (
         <div className="text-center mb-6">
           <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800">
-            {user?.name}'s Logsheet
+          {
+            user?.role==="Instructor" ? "Candidate's Logsheet" : `${user?.name}'s Logsheet`
+          }
           </h2>
         </div>
       )}

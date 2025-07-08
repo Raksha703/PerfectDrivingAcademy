@@ -25,7 +25,7 @@ const Video = ({ adminMode = false, onDelete, onUpdate }) => {
   const fetchVideos = async () => {
     try {
       const res = await axios.get(`${BACKEND_BASE_URL}/video/all`);
-      setVideos(res.data.data || []);
+      setVideos((res.data.data || []).reverse());
     } catch (err) {
       console.error('Error fetching videos:', err);
       toast.error("Error fetching videos.", { autoClose: 2000 });

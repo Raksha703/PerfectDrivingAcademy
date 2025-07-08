@@ -43,9 +43,9 @@ function Register() {
     try {
       setLoading(true);
       const url = `${BACKEND_BASE_URL}/user/sendOtp`;
-      const { data: res } = await axios.post(url, { email: formData.email });
+      const res = await axios.post(url, { email: formData.email });
       setLoading(false);
-      setOtpGenerated(res.otp);
+      setOtpGenerated(res.data.data);
       toast.success("OTP sent to your email!", { autoClose: 2000 });
     } catch (error) {
       setLoading(false);
@@ -83,14 +83,6 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.termsAccepted) {
-      return toast.error("You must accept the Terms and Conditions.", { autoClose: 2000 });
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      return toast.error("Passwords do not match.", { autoClose: 2000 });
-    }
-
     const submissionData = new FormData();
     Object.entries(formData).forEach(([key, val]) => {
       if (key === "avatar" && val) {
@@ -111,11 +103,11 @@ function Register() {
       navigate("/");
     } catch (err) {
       setLoading(false);
-      console.error("Registration error:", err);
-      toast.error("Registration failed. Please try again.", { autoClose: 2000 });
-      setTimeout(() => navigate("/"), 2000);
+      console.error("Registration error:", err?.response?.data?.message);
+      toast.error(err?.response?.data?.message || "Registration failed. Please try again.", { autoClose: 2000 });
     }
   };
+  
 
   const isInstructor = formData.role === 'Instructor';
 
@@ -269,9 +261,10 @@ function Register() {
                 name="termsAccepted"
                 id="termsAccepted"
                 checked={formData.termsAccepted}
-                onChange={(e) => setFormData({ ...formData, termsAccepted: e.target.checked })}
+                onChange={handleChange}
                 className="me-2"
               />
+              {console.log(formData.termsAccepted)}
               <Form.Label htmlFor="termsAccepted" className="mb-0">
                 I agree to the{' '}
                 <span

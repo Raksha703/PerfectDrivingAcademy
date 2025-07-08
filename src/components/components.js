@@ -9,8 +9,14 @@ import CourseCard from "./CourseCard";
 import CourseFormModal from "./CourseFormModal";
 import LogsheetModal from "./LogsheetModal";
 import Loader from "./Loader";
+import UserTable from "./UserTable";
+import UserSection from "./UserSection";
+import SummaryUserCard from "./SummaryUserCard";
 
 export {
+    SummaryUserCard,
+    UserTable,
+    UserSection,
     Loader,
     LogsheetModal,
     Header,

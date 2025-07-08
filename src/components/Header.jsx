@@ -17,7 +17,7 @@ function Header() {
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
 
-  const role = user ? user.data.role : "Candidate";
+  const role = user ? user.data?.role : "Candidate";
 
   const handleLogout = async () => {
     try {
