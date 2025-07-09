@@ -1,7 +1,8 @@
 // components/UserTable.jsx
 import { Link } from "react-router-dom";
 
-const UserTable = ({ users, showApprove, onApprove, onDelete, backUserRole, loading }) => {
+const UserTable = ({ users, showApprove, onApprove, onDelete, loading, markELigible }) => {
+  
   return (
     <div className="overflow-x-auto mb-8">
       <table className="w-full border border-gray-300 shadow-sm">
@@ -13,7 +14,10 @@ const UserTable = ({ users, showApprove, onApprove, onDelete, backUserRole, load
             <th className="py-3 px-4 border">Email</th>
             <th className="py-3 px-4 border">Contact</th>
             <th className="py-3 px-4 border">Vehicle</th>
-            {!showApprove && <th className="py-3 px-4 border">Logsheet</th>}
+            {!showApprove && <>
+              <th className="py-3 px-4 border">Logsheet</th>
+              <th className="py-3 px-4 border">Certificate</th>
+            </>}
             {<th className="py-3 px-4 border">Actions</th>}
           </tr>
         </thead>
@@ -29,9 +33,19 @@ const UserTable = ({ users, showApprove, onApprove, onDelete, backUserRole, load
               <td className="py-3 px-4 border">{user.contactNumber}</td>
               <td className="py-3 px-4 border">{user.vehicleToLearn?.join(", ")}</td>
               {!showApprove && (
+                <>
                 <td className="py-3 px-4 border">
                   <Link to={`/logsheet/${user._id}`} className="text-blue-500 hover:underline">View</Link>
                 </td>
+                {
+                  user.isCertificateEligible ? <td className="py-3 px-4 border">Already Marked Eligible</td> : 
+
+                
+                <td className="py-3 px-4 border">
+                  <button onClick={()=>markELigible(user._id)} className="text-blue-500 hover:underline">Mark as eligible</button>
+                </td>
+                }
+                </>
               )}
               {(
                 <td className="py-3 px-4 border text-center">

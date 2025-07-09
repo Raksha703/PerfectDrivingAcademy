@@ -4,7 +4,7 @@ import UserTable from "./UserTable";
 
 const ITEMS_PER_PAGE = 5;
 
-const UserSection = ({ title, users, showApprove, onApprove, onDelete }) => {
+const UserSection = ({ title, users, showApprove, onApprove, onDelete, markELigible }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(users.length / ITEMS_PER_PAGE);
@@ -48,6 +48,7 @@ const UserSection = ({ title, users, showApprove, onApprove, onDelete }) => {
           showApprove={showApprove}
           onApprove={onApprove}
           onDelete={onDelete}
+          markELigible={markELigible}
         />
       )}
     </div>

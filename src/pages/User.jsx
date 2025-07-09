@@ -34,6 +34,20 @@ const User = () => {
     }
   };
 
+  const markELigible = async(userId) => {
+    
+      try {
+        setLoading(true)
+        await axios.patch(`${BACKEND_BASE_URL}/user/markEligible/${userId}`)
+        toast.success("User marked eligible successfully!", { autoClose: 2000 });
+        await fetchUsers();
+      } catch (err) {
+      toast.error("Failed to mark user eligible for certificate", { autoClose: 2000 });
+    } finally {
+      setLoading(false);
+    }
+  }
+
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -102,6 +116,7 @@ const User = () => {
                   onApprove={handleApprove}
                   onDelete={handleDelete}
                   backUserRole={backUser?.role}
+                  markELigible={markELigible}
                 />
               )}
               {showSection === "pending" && (
@@ -111,6 +126,7 @@ const User = () => {
                   showApprove={true}
                   onApprove={handleApprove}
                   onDelete={handleDelete}
+                  markELigible={markELigible}
                 />
               )}
             </>

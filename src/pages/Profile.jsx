@@ -24,6 +24,7 @@ function Profile() {
     specialties: userData?.specialties?.join(', ') || '',
     license: userData?.license || '',
     experience: userData?.experience || '',
+    isCertificateEligible: userData?.isCertificateEligible || ""
   }));
 
   if (!userData) {
@@ -135,17 +136,18 @@ function Profile() {
                   Logsheet
                 </button>
               </Link>
-              <Link to={`/logsheet/${userData._id}`}>
-                <button className="bg-blue-950 hover:bg-blue-900 text-white px-6 py-3 rounded-xl shadow transition duration-300 w-full">
+              {userData.isCertificateEligible && (<Link to={"https://forms.gle/swvh9nUk3piEoWE49"}>
+                <button className="border border-blue-950 text-blue-950 hover:bg-blue-50 px-6 py-3 rounded-xl shadow transition duration-300 w-full">
                   Form for certificate
                 </button>
               </Link>
+            )}
               </>
             )}
 
             <button
               onClick={() => setShowModal(true)}
-              className="border border-blue-950 text-blue-950 hover:bg-blue-50 px-6 py-3 rounded-xl shadow transition duration-300 w-full"
+              className="bg-blue-950 hover:bg-blue-900 text-white px-6 py-3 rounded-xl shadow transition duration-300 w-full"
             >
               Edit Profile
             </button>
