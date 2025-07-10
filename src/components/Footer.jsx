@@ -70,6 +70,8 @@ function Footer() {
 
       <div className="border-t border-gray-700 text-center py-4 text-gray-400 text-sm">
         © 2025 Perfect Car Driving Training Academy. All rights reserved.
+        <br/>
+        © Website by Raksha Agrawal. For more information, contact: 9644350589.
       </div>
     </footer>
   );
