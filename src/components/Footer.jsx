@@ -50,10 +50,7 @@ function Footer() {
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold mb-4">Subscribe</h3>
-          <p className="text-gray-400 text-sm mb-3">
-            Get updates on offers, tips, and driving regulations.
-          </p>
+          <h3 className="text-xl font-semibold mb-4">Social Media Handles</h3>
           <div className="flex space-x-4 mt-2">
             <a href="https://instagram.com" className="hover:text-yellow-400 transition">
               <FaInstagram size={20} />
